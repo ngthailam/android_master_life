@@ -1,15 +1,21 @@
 package vn.thailam.android.masterlife.app.page.passsaver.passlist
 
+import android.text.method.PasswordTransformationMethod
+import android.text.method.SingleLineTransformationMethod
+import android.text.method.TransformationMethod
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import vn.thailam.android.masterlife.R
 import vn.thailam.android.masterlife.app.page.passsaver.PassUiModel
+import vn.thailam.android.masterlife.app.utils.copyToClipboard
+import vn.thailam.android.masterlife.app.utils.toast
 import vn.thailam.android.masterlife.databinding.ItemPassSaverBinding
 
 class PassSaverAdapter(
-    private val onItemClick: (entity: PassUiModel) -> Unit
+    private val interactionInterface: PassSaverItemInteraction
 ) :
     ListAdapter<PassUiModel, PassSaverAdapter.UtilityViewHolder>(PassUiModelDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UtilityViewHolder {
@@ -18,7 +24,7 @@ class PassSaverAdapter(
             parent,
             false
         )
-        return UtilityViewHolder(binding, onItemClick)
+        return UtilityViewHolder(binding, interactionInterface)
     }
 
     override fun onBindViewHolder(holder: UtilityViewHolder, position: Int) {
@@ -26,25 +32,58 @@ class PassSaverAdapter(
     }
 
     class UtilityViewHolder(
-        binding: ItemPassSaverBinding,
-        private val onItemClick: (entity: PassUiModel) -> Unit,
+        private val binding: ItemPassSaverBinding,
+        private val interactionInterface: PassSaverItemInteraction
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
         private var item: PassUiModel? = null
 
         init {
-            binding.root.setOnClickListener {
-                item?.let { PassUiModel ->
-                    onItemClick.invoke(PassUiModel)
+            binding.run {
+                val ctx = binding.root.context
+                icEye.setOnClickListener {
+                    item?.let { passUiModel ->
+                        interactionInterface.onTogglePasswordClick(passUiModel)
+                    }
+                }
+                ivCopyAccName.setOnClickListener {
+                    ctx.copyToClipboard(item?.entity?.accName ?: "")
+                    ctx.toast("Account name copied")
+                }
+                ivCopyPassword.setOnClickListener {
+                    if (item?.showPassword == true) {
+                        ctx.copyToClipboard(item?.entity?.decryptedPassword ?: "")
+                        ctx.toast("Password copied")
+                    } else {
+                        ctx.toast("Password must be visible to be copied. Please click the eye icon")
+                    }
                 }
             }
         }
 
-        fun bind(item: PassUiModel?) {
+        fun bind(item: PassUiModel) {
             this.item = item
+            binding.run {
+                tvName.text = item.entity.name ?: ""
+                tvAccName.text = item.entity.accName ?: ""
+                tvPass.text = item.entity.decryptedPassword ?: ""
+                icEye.setImageResource(getEyeIcon())
+                tvPass.transformationMethod = getTvPassTransformationMethod()
+
+            }
         }
+
+        private fun getEyeIcon(): Int =
+            if (item!!.showPassword) R.drawable.ic_24outline_visibility_off else R.drawable.ic_24outline_visibility_on
+
+        private fun getTvPassTransformationMethod(): TransformationMethod =
+            if (item!!.showPassword) SingleLineTransformationMethod.getInstance() else PasswordTransformationMethod.getInstance()
     }
+}
+
+interface PassSaverItemInteraction {
+    fun onTogglePasswordClick(password: PassUiModel)
 }
 
 class PassUiModelDiffUtil : DiffUtil.ItemCallback<PassUiModel>() {

@@ -26,7 +26,7 @@ class HomeUtilityAdapter(
     }
 
     class UtilityViewHolder(
-        binding: ItemHomeUtilityBinding,
+        private val binding: ItemHomeUtilityBinding,
         private val onItemClick: (entity: UtilityEntity) -> Unit,
     ) :
         RecyclerView.ViewHolder(binding.root) {
@@ -43,6 +43,9 @@ class HomeUtilityAdapter(
 
         fun bind(item: UtilityEntity?) {
             this.item = item
+            binding.run {
+                tvUltiName.text = item!!.name
+            }
         }
     }
 }

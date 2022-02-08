@@ -1,6 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:paddingVertical="8dp"
+    android:paddingEnd="16dp"
+    tools:ignore="RtlSymmetry">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icEye"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:tint="@color/blue500"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_24outline_visibility_on" />
+
+    <View
+        android:id="@+id/vDivider"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="@color/blue200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icEye"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/vDivider"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Password for personal Gmail" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAccName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        tools:text="ngthailam98@gmail.com" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivCopyAccName"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:srcCompat="@drawable/ic_24baseline_content_copy"
+        android:padding="8dp"
+        app:layout_constraintStart_toEndOf="@id/tvAccName"
+        app:layout_constraintTop_toTopOf="@id/tvAccName"
+        app:layout_constraintBottom_toBottomOf="@id/tvAccName"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="@id/tvAccName"
+        app:layout_constraintTop_toBottomOf="@id/tvAccName"
+        tools:text="Abcdegh@1234" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivCopyPassword"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:srcCompat="@drawable/ic_24baseline_content_copy"
+        android:padding="8dp"
+        app:layout_constraintStart_toEndOf="@id/tvPass"
+        app:layout_constraintTop_toTopOf="@id/tvPass"
+        app:layout_constraintBottom_toBottomOf="@id/tvPass"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

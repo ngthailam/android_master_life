@@ -9,7 +9,7 @@ import vn.thailam.android.masterlife.data.dao.UtilityDao
 import vn.thailam.android.masterlife.data.entity.PassEntity
 import vn.thailam.android.masterlife.data.entity.UtilityEntity
 
-const val DB_VERSION = 1
+const val DB_VERSION = 3
 
 @Database(
     exportSchema = false,

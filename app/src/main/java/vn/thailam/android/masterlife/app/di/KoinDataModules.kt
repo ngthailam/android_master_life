@@ -8,12 +8,14 @@ import vn.thailam.android.masterlife.data.dao.AuthDao
 import vn.thailam.android.masterlife.data.dao.AuthDaoImpl
 import vn.thailam.android.masterlife.data.repo.AuthRepo
 import vn.thailam.android.masterlife.data.repo.AuthRepoImpl
+import vn.thailam.android.masterlife.data.repo.KeyRepo
+import vn.thailam.android.masterlife.data.repo.KeyRepoImpl
 import vn.thailam.android.masterlife.data.repo.PassRepo
 import vn.thailam.android.masterlife.data.repo.PassRepoImpl
 import vn.thailam.android.masterlife.data.repo.UtilityRepo
 import vn.thailam.android.masterlife.data.repo.UtilityRepoImpl
-import vn.thailam.android.masterlife.data.utils.PassSecurityStore
-import vn.thailam.android.masterlife.data.utils.PassSecurityStoreImpl
+import vn.thailam.android.masterlife.data.sources.local.PassSecurityStore
+import vn.thailam.android.masterlife.data.sources.local.PassSecurityStoreImpl
 
 val dbModule = module {
     single {
@@ -22,7 +24,7 @@ val dbModule = module {
 }
 
 val dataUtils = module {
-    factory<PassSecurityStore> { PassSecurityStoreImpl() }
+    single<PassSecurityStore> { PassSecurityStoreImpl(get()) }
 }
 
 val daoModule = module {
@@ -41,6 +43,7 @@ val repoModule = module {
     factory<UtilityRepo> { UtilityRepoImpl(get()) }
     factory<AuthRepo> { AuthRepoImpl(get()) }
     factory<PassRepo> { PassRepoImpl(get(), get()) }
+    factory<KeyRepo> { KeyRepoImpl() }
 }
 
 

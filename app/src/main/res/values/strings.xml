@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MasterLife</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="inform_mess_secure_password">Password is saved securely using Android Keystore. No internet connection is established, so it is not sent anywhere</string>
 </resources>

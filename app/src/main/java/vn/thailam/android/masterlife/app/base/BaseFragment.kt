@@ -31,7 +31,11 @@ abstract class BaseViewBindingFragment<VB : ViewBinding> : Fragment() {
         setupViewModel()
     }
 
-    open fun setupUI() = Unit
+    open fun setupUI() {
+        setupClickListeners()
+    }
+
+    open fun setupClickListeners() = Unit
     open fun setupViewModel() = Unit
 
     override fun onDestroyView() {

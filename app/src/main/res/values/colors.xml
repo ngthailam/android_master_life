@@ -1,10 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="primarya400s">#5989FF</color>
+    <color name="primarya300s">#C1D3FF</color>
+    <color name="primarya200s">#EAF0FF</color>
+    <color name="primarya100s">#F5F8FF</color>
+
+    <color name="ink400s">#808890</color>
+    <color name="ink300s">#B3B8BD</color>
+    <color name="ink200s">#E6E7E9</color>
+    <color name="ink100s">#F2F3F4</color>
+
+    <color name="black400s">#4D4D4D</color>
+    <color name="black300s">#999999</color>
+    <color name="black200s">#B3B3B3</color>
+    <color name="black100s">#E6E6E6</color>
+
+    <color name="blue400s">#5989FF</color>
+    <color name="blue300s">#C1D3FF</color>
+    <color name="blue200s">#EAF0FF</color>
+    <color name="blue100s">#F5F8FF</color>
+
+    <color name="green400s">#33C963</color>
+    <color name="green300s">#B3EBC5</color>
+    <color name="green200s">#E6F8EC</color>
+    <color name="green100s">#F2FCF5</color>
+
+    <color name="orange400s">#FF9B4B</color>
+    <color name="orange300s">#FFDABC</color>
+    <color name="orange200s">#FFF3E9</color>
+    <color name="orange100s">#FFF9F4</color>
+
+    <color name="red400s">#E82727</color>
+    <color name="red300s">#FFB5B5</color>
+    <color name="red200s">#FCE7E7</color>
+    <color name="red100s">#FEF3F5</color>
+
+    <!--Update 24.03 New color name-->
+    <color name="branda500">#dc2323</color>
+    <color name="brandb500">#355587</color>
+
+    <color name="primarya500">#2f6bff</color>
+    <color name="primarya400">#cc2f6bff</color>
+    <color name="primarya300">#4d2f6bff</color>
+    <color name="primarya200">#1a2f6bff</color>
+    <color name="primarya100">#0d2f6bff</color>
+
+    <color name="ink500">#22313F</color>
+    <color name="ink400">#80011222</color>
+    <color name="ink300">#4d011222</color>
+    <color name="ink200">#1a011222</color>
+    <color name="ink100">#0d011222</color>
+
+    <color name="black500">#cc000000</color>
+    <color name="black400">#b3000000</color>
+    <color name="black300">#66000000</color>
+    <color name="black200">#4d000000</color>
+    <color name="black100">#1a000000</color>
+
+    <color name="white500">#ffffff</color>
+    <color name="white400">#b3ffffff</color>
+    <color name="white300">#66ffffff</color>
+    <color name="white200">#4dffffff</color>
+    <color name="white100">#1affffff</color>
+
+    <color name="blue500">#2f6bff</color>
+    <color name="blue400">#cc2f6bff</color>
+    <color name="blue300">#4d2f6bff</color>
+    <color name="blue200">#1a2f6bff</color>
+    <color name="blue100">#0d2f6bff</color>
+
+    <color name="green500">#00bc3c</color>
+    <color name="green400">#cc00bc3c</color>
+    <color name="green300">#4d00bc3c</color>
+    <color name="green200">#1a00bc3c</color>
+    <color name="green100">#0d00bc3c</color>
+
+    <color name="orange500">#ff821e</color>
+    <color name="orange400">#ccff821e</color>
+    <color name="orange300">#4dff821e</color>
+    <color name="orange200">#1aff821e</color>
+    <color name="orange100">#0dff821e</color>
+
+    <color name="red500">#e60a32</color>
+    <color name="red400">#cce60a32</color>
+    <color name="red300">#4de60a32</color>
+    <color name="red200">#1ae60a32</color>
+    <color name="red100">#0de60a32</color>
 </resources>
