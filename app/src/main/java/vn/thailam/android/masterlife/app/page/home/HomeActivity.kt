@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import vn.thailam.android.masterlife.app.base.BaseVBActivity
 import vn.thailam.android.masterlife.app.page.home.utility.HomeUtilityAdapter
-import vn.thailam.android.masterlife.app.page.passsaver.PassSaverActivity
+import vn.thailam.android.masterlife.app.page.note.list.NoteActivity
+import vn.thailam.android.masterlife.app.page.passsaver.list.PassSaverActivity
 import vn.thailam.android.masterlife.data.entity.UtilityCode
 import vn.thailam.android.masterlife.data.entity.UtilityEntity
 import vn.thailam.android.masterlife.databinding.ActivityHomeBinding
@@ -46,6 +47,10 @@ class HomeActivity : BaseVBActivity<ActivityHomeBinding>() {
         when (utility.code) {
             UtilityCode.PASS_SAVER -> {
                 val intent = Intent(this, PassSaverActivity::class.java)
+                startActivity(intent)
+            }
+            UtilityCode.NOTES -> {
+                val intent = Intent(this, NoteActivity::class.java)
                 startActivity(intent)
             }
             else -> {

@@ -1,4 +1,4 @@
-package vn.thailam.android.masterlife.app.page.passsaver
+package vn.thailam.android.masterlife.app.page.passsaver.list
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import vn.thailam.android.masterlife.R
 import vn.thailam.android.masterlife.app.base.BaseVBActivity
 import vn.thailam.android.masterlife.app.page.passsaver.create.PassSaverCreateFragment
-import vn.thailam.android.masterlife.app.page.passsaver.passlist.PassSaverAdapter
-import vn.thailam.android.masterlife.app.page.passsaver.passlist.PassSaverItemInteraction
+import vn.thailam.android.masterlife.app.page.passsaver.list.adapter.PassSaverAdapter
+import vn.thailam.android.masterlife.app.page.passsaver.list.adapter.PassSaverItemInteraction
 import vn.thailam.android.masterlife.app.utils.applySlideInUp
 import vn.thailam.android.masterlife.databinding.ActivityPassSaverBinding
 
@@ -55,7 +55,8 @@ class PassSaverActivity : BaseVBActivity<ActivityPassSaverBinding>() {
         }
     }
 
-    private fun setupClickListeners() {
+    override fun setupClickListeners() {
+        super.setupClickListeners()
         binding.run {
             fabCreate.setOnClickListener {
                 goToCreatePage()

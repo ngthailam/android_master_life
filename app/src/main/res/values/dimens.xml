@@ -4,4 +4,5 @@
     <dimen name="inform_view_min_height">44dp</dimen>
     <dimen name="dp_16">16dp</dimen>
     <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_4">4dp</dimen>
 </resources>

@@ -21,6 +21,9 @@ abstract class BaseVBActivity<B : ViewBinding> : AppCompatActivity() {
         setupViewModel()
     }
 
-    open fun setupUI() = Unit
+    open fun setupUI() {
+        setupClickListeners()
+    }
+    open fun setupClickListeners() = Unit
     open fun setupViewModel() = Unit
 }
