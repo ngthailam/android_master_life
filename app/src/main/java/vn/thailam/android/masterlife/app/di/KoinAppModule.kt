@@ -4,6 +4,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import vn.thailam.android.masterlife.app.page.home.HomeViewModel
 import vn.thailam.android.masterlife.app.page.passsaver.PassSaverViewModel
+import vn.thailam.android.masterlife.app.page.passsaver.create.PassSaverCreateViewModel
 import vn.thailam.android.masterlife.app.page.splash.SplashViewModel
 
 val utils = module {
@@ -16,6 +17,7 @@ val viewModelModule = module {
     viewModel { HomeViewModel(get()) }
     viewModel { PassSaverViewModel(get()) }
     viewModel { SplashViewModel(get(), get()) }
+    viewModel { PassSaverCreateViewModel(get()) }
 }
 
 val appModules = listOf(

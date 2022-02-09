@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white500"
+    android:id="@+id/parentStateView"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="40dp"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgIcon"
+        android:layout_width="192dp"
+        android:layout_height="192dp"
+        android:layout_marginBottom="24dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitle"
+        style="@style/T16M20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="2"
+        tools:text="Title"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSubTitle"
+        style="@style/T16R20"
+        android:layout_width="wrap_content"
+        android:textColor="@color/ink400"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="4"
+        tools:text="Subtitle" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAction"
+        style="@style/common_button"
+        android:layout_width="248dp"
+        android:layout_height="40dp"
+        tools:text="Button" />
+</merge>
