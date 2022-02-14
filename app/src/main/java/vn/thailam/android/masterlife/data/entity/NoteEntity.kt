@@ -12,6 +12,7 @@ const val NOTE_PRIMARY_KEY = "id"
 const val NOTE_COL_TITLE = "title"
 const val NOTE_COL_DESC = "desc"
 const val NOTE_COL_CREATED_AT = "created_at"
+const val NOTE_COL_PIN_DATE = "pin_at"
 
 @Parcelize
 @Entity(tableName = NOTE_TBL_NAME)
@@ -24,6 +25,8 @@ data class NoteEntity(
     @ColumnInfo(name = NOTE_COL_DESC)
     val desc: String? = null,
     @ColumnInfo(name = NOTE_COL_CREATED_AT)
-    val createdAt: Date = Date(System.currentTimeMillis())
+    val createdAt: Date = Date(System.currentTimeMillis()),
+    @ColumnInfo(name = NOTE_COL_PIN_DATE)
+    val pin: Date? = null,
 ) : Parcelable
 

@@ -9,8 +9,8 @@ import vn.thailam.android.masterlife.data.entity.UtilityEntity
 @Dao
 interface UtilityDao {
     @Insert
-    fun insertAll(utilities: List<UtilityEntity>)
+    suspend fun insertAll(utilities: List<UtilityEntity>)
 
     @Query("SELECT * FROM $UTILITY_TBL_NAME")
-    fun getAll(): List<UtilityEntity>
+    suspend fun getAll(): List<UtilityEntity>
 }

@@ -8,21 +8,40 @@
     android:background="@color/ink200s"
     tools:context=".app.page.note.list.NoteActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbNotes"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_24baseline_arrow_back" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivCheck"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:padding="16dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_24baseline_check"
+        tools:visibility="visible" />
+
     <androidx.appcompat.widget.SearchView
         android:id="@+id/svNote"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:focusable="false"
-        android:layout_marginTop="16dp"
         android:layout_marginHorizontal="32dp"
-        app:queryHint="Search notes"
-        app:iconifiedByDefault="false"
-        app:queryBackground="@drawable/bg_rounded_32"
-        app:submitBackground="@drawable/bg_rounded_32"
         android:background="@drawable/bg_rounded_32"
-        app:layout_constraintTop_toTopOf="parent"
+        android:focusable="false"
+        app:iconifiedByDefault="false"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/tbNotes"
+        app:queryBackground="@drawable/bg_rounded_32"
+        app:queryHint="Search notes"
+        app:submitBackground="@drawable/bg_rounded_32" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNotes"
@@ -46,4 +65,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:tint="@color/white500" />
 
+    <!-- TODO: move to custom view -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clOptionBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white500"
+        android:elevation="4dp"
+        android:padding="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivTrash"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivPin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_24baseline_delete" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivPin"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivTrash"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_24baseline_push_pin" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,15 @@
 package vn.thailam.android.masterlife.app.page.note.detail
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.core.widget.doAfterTextChanged
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import vn.thailam.android.japanwritinghelper.app.base.BaseViewBindingFragment
+import vn.thailam.android.masterlife.R
 import vn.thailam.android.masterlife.app.utils.OpStatus
+import vn.thailam.android.masterlife.app.utils.toast
 import vn.thailam.android.masterlife.databinding.FragmentNoteCreateBinding
 
 class NoteDetailFragment : BaseViewBindingFragment<FragmentNoteCreateBinding>() {
@@ -19,16 +22,39 @@ class NoteDetailFragment : BaseViewBindingFragment<FragmentNoteCreateBinding>() 
         arguments?.getInt(ARG_NOTE_ID, 0) ?: 0
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun setupUI() {
         super.setupUI()
+        setupToolbar()
         setupTextChangeListeners()
     }
 
     override fun setupClickListeners() {
         super.setupClickListeners()
-        binding.run {
-            tbCreateNote.setNavigationOnClickListener {
+    }
+
+    private fun setupToolbar() {
+        binding.tbCreateNote.run {
+            setNavigationOnClickListener {
                 activity?.onBackPressed()
+            }
+            inflateMenu(R.menu.menu_note_detail)
+            setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.menu_note_detail_pin, R.id.menu_note_detail_unpin -> {
+                        viewModel.pinOrUnpinNote()
+                        true
+                    }
+                    R.id.menu_note_detail_delete -> {
+                        viewModel.deleteNote()
+                        true
+                    }
+                    else -> false
+                }
             }
         }
     }
@@ -44,8 +70,33 @@ class NoteDetailFragment : BaseViewBindingFragment<FragmentNoteCreateBinding>() 
         super.setupViewModel()
         viewModel.run {
             mode.observe(viewLifecycleOwner, ::onModeChanged)
+            deleteOpStatus.observe(viewLifecycleOwner, ::onDeleteOpStatusChanged)
+            pinOpStatus.observe(viewLifecycleOwner, ::onPinChanged)
 
             initialize(noteId)
+        }
+    }
+
+    private fun onPinChanged(opStatus: OpStatus) {
+        updatePinMenu()
+    }
+
+    private fun updatePinMenu() {
+        val isPin = viewModel.isPin
+        binding.tbCreateNote.menu.findItem(R.id.menu_note_detail_pin).isVisible = !isPin
+        binding.tbCreateNote.menu.findItem(R.id.menu_note_detail_unpin).isVisible = isPin
+    }
+
+    private fun onDeleteOpStatusChanged(opStatus: OpStatus) {
+        when (opStatus) {
+            is OpStatus.Success -> {
+                requireContext().toast(message = "Delete note successfully")
+                activity?.onBackPressed()
+            }
+            is OpStatus.Error -> {
+                requireContext().toast(message = "Delete note error ${opStatus.e.message}")
+            }
+            else -> Unit
         }
     }
 
@@ -57,6 +108,7 @@ class NoteDetailFragment : BaseViewBindingFragment<FragmentNoteCreateBinding>() 
             }
             else -> Unit
         }
+        updatePinMenu()
     }
 
     companion object {

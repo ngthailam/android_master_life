@@ -14,7 +14,7 @@ import vn.thailam.android.masterlife.data.entity.ScheduleEntity
 @Dao
 interface ScheduleDao {
     @Insert
-    fun insert(note: ScheduleEntity)
+    suspend fun insert(note: ScheduleEntity)
 
     @Query("SELECT * FROM $SCHE_TBL_NAME")
     fun getAllFlow(): Flow<List<ScheduleEntity>>

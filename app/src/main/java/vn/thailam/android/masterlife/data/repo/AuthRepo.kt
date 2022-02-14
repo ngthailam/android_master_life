@@ -4,25 +4,25 @@ import vn.thailam.android.masterlife.data.dao.AuthDao
 import vn.thailam.android.masterlife.data.entity.UserEntity
 
 interface AuthRepo {
-    fun isLoggedIn(): Boolean
+    suspend fun isLoggedIn(): Boolean
 
-    fun getUser(): UserEntity?
+    suspend fun getUser(): UserEntity?
 
-    fun saveUser(name: String)
+    suspend fun saveUser(name: String)
 }
 
 class AuthRepoImpl(
     private val authDao: AuthDao
 ) : AuthRepo {
-    override fun isLoggedIn(): Boolean {
+    override suspend fun isLoggedIn(): Boolean {
         return authDao.isLoggedIn()
     }
 
-    override fun getUser(): UserEntity? {
+    override suspend fun getUser(): UserEntity? {
         return authDao.getUser()
     }
 
-    override fun saveUser(name: String) {
+    override suspend fun saveUser(name: String) {
         authDao.saveUser(name)
     }
 }

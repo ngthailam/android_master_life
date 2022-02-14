@@ -6,7 +6,7 @@ import vn.thailam.android.masterlife.data.entity.ScheduleEntity
 import java.util.Date
 
 interface ScheduleRepo {
-    fun insert(title: String = "", desc: String, time: Date? = null)
+    suspend fun insert(title: String = "", desc: String, time: Date? = null)
 
     fun getAllFlow(): Flow<List<ScheduleEntity>>
 
@@ -14,19 +14,19 @@ interface ScheduleRepo {
 }
 
 class ScheduleRepoImpl(
-    private val ScheduleDao: ScheduleDao
+    private val scheduleDao: ScheduleDao
 ) : ScheduleRepo {
-    override fun insert(title: String, desc: String, time: Date?) {
-        ScheduleDao.insert(
+    override suspend fun insert(title: String, desc: String, time: Date?) {
+        scheduleDao.insert(
             ScheduleEntity(title = title, desc = desc, time = time)
         )
     }
 
     override fun getAllFlow(): Flow<List<ScheduleEntity>> {
-        return ScheduleDao.getAllFlow()
+        return scheduleDao.getAllFlow()
     }
 
     override fun getByIdFlow(id: Int): Flow<ScheduleEntity> {
-        return ScheduleDao.getByIdFlow(id)
+        return scheduleDao.getByIdFlow(id)
     }
 }

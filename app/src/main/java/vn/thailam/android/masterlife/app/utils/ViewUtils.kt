@@ -29,3 +29,15 @@ fun getRoundShapeDrawable(cornerRadius: Float, @ColorInt color: Int): Drawable {
     shapeDrawable.paint.color = color
     return shapeDrawable
 }
+
+fun View.visibility(visible: Boolean) {
+    if (visible) visible() else gone()
+}
+
+fun View.gone() {
+    visibility = View.GONE
+}
+
+fun View.visible() {
+    visibility = View.VISIBLE
+}
