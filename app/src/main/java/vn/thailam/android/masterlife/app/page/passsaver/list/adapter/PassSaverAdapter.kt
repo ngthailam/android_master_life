@@ -1,4 +1,4 @@
-package vn.thailam.android.masterlife.app.page.passsaver.passlist
+package vn.thailam.android.masterlife.app.page.passsaver.list.adapter
 
 import android.text.method.PasswordTransformationMethod
 import android.text.method.SingleLineTransformationMethod
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import vn.thailam.android.masterlife.R
-import vn.thailam.android.masterlife.app.page.passsaver.PassUiModel
+import vn.thailam.android.masterlife.app.page.passsaver.list.PassUiModel
 import vn.thailam.android.masterlife.app.utils.copyToClipboard
 import vn.thailam.android.masterlife.app.utils.toast
 import vn.thailam.android.masterlife.databinding.ItemPassSaverBinding
@@ -17,21 +17,21 @@ import vn.thailam.android.masterlife.databinding.ItemPassSaverBinding
 class PassSaverAdapter(
     private val interactionInterface: PassSaverItemInteraction
 ) :
-    ListAdapter<PassUiModel, PassSaverAdapter.UtilityViewHolder>(PassUiModelDiffUtil()) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UtilityViewHolder {
+    ListAdapter<PassUiModel, PassSaverAdapter.PassSaverViewHolder>(PassUiModelDiffUtil()) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PassSaverViewHolder {
         val binding = ItemPassSaverBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
-        return UtilityViewHolder(binding, interactionInterface)
+        return PassSaverViewHolder(binding, interactionInterface)
     }
 
-    override fun onBindViewHolder(holder: UtilityViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PassSaverViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    class UtilityViewHolder(
+    class PassSaverViewHolder(
         private val binding: ItemPassSaverBinding,
         private val interactionInterface: PassSaverItemInteraction
     ) :

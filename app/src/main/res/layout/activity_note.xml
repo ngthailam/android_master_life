@@ -2,45 +2,48 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/clPassSaverContainer"
+    android:id="@+id/clNoteContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".app.page.passsaver.list.PassSaverActivity">
+    android:background="@color/ink200s"
+    tools:context=".app.page.note.list.NoteActivity">
 
-    <vn.thailam.android.masterlife.app.custom.informview.InformView
-        android:id="@+id/informViewPassSaver"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/svNote"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"
-        app:iv_message="@string/inform_mess_secure_password"
-        app:iv_canDismiss="true"
-        app:iv_style="info"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:focusable="false"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="32dp"
+        app:queryHint="Search notes"
+        app:iconifiedByDefault="false"
+        app:queryBackground="@drawable/bg_rounded_32"
+        app:submitBackground="@drawable/bg_rounded_32"
+        android:background="@drawable/bg_rounded_32"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvPasswords"
+        android:id="@+id/rvNotes"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/informViewPassSaver" />
+        app:layout_constraintTop_toBottomOf="@id/svNote" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabCreate"
+        android:id="@+id/fabCreateNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:contentDescription="Create new Password saver"
+        android:contentDescription="Create new Note"
         android:src="@drawable/ic_24baseline_add"
-        app:tint="@color/white500"
         app:elevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white500" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

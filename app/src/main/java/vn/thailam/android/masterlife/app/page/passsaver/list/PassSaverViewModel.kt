@@ -1,4 +1,4 @@
-package vn.thailam.android.masterlife.app.page.passsaver
+package vn.thailam.android.masterlife.app.page.passsaver.list
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope

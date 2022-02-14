@@ -18,6 +18,11 @@ class PassSaverCreateFragment : BaseViewBindingFragment<FragmentPassSaverCreateB
 
     private val viewModel by viewModel<PassSaverCreateViewModel>()
 
+    override fun onStop() {
+        super.onStop()
+        requireActivity().hideKeyboard()
+    }
+
     override fun setupUI() {
         super.setupUI()
         setupTextInputs()

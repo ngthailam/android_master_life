@@ -10,6 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MasterLife">
+        <activity android:name=".app.page.note.detail.NoteDetailActivity"></activity>
+        <activity android:name=".app.page.note.list.NoteActivity" />
         <activity
             android:name=".app.page.splash.SplashActivity"
             android:exported="true">
@@ -19,10 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".app.page.passsaver.PassSaverActivity" />
-        <activity android:name=".app.page.home.HomeActivity">
-
-        </activity>
+        <activity android:name=".app.page.passsaver.list.PassSaverActivity" />
+        <activity android:name=".app.page.home.HomeActivity" />
     </application>
 
 </manifest>

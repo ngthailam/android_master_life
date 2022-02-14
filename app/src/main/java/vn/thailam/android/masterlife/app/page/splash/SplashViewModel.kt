@@ -37,10 +37,10 @@ class SplashViewModel(
 
     private suspend fun prepopulateUtilities() = withContext(Dispatchers.IO) {
         val exist = utilityRepo.getAll().isNotEmpty()
-        print("ZZLL exist ? $exist")
         if (!exist) {
             val data = listOf(
-                UtilityEntity(name = "Password Saver", code = UtilityCode.PASS_SAVER)
+                UtilityEntity(name = "Password Saver", code = UtilityCode.PASS_SAVER),
+                UtilityEntity(name = "Notes", code = UtilityCode.NOTES)
             )
             utilityRepo.insertAll(data)
         }
