@@ -13,7 +13,7 @@ import vn.thailam.android.masterlife.data.entity.NoteEntity
 @Dao
 interface NoteDao {
     @Insert
-    fun insert(note: NoteEntity)
+    suspend fun insert(note: NoteEntity)
 
     @Query("SELECT * FROM $NOTE_TBL_NAME")
     fun getAllFlow(): Flow<List<NoteEntity>>
@@ -22,11 +22,17 @@ interface NoteDao {
     fun getByIdFlow(id: Int): Flow<NoteEntity>
 
     @Query("SELECT * FROM $NOTE_TBL_NAME WHERE $NOTE_PRIMARY_KEY=:id")
-    fun getById(id: Int): NoteEntity
+    suspend fun getById(id: Int): NoteEntity
 
     @Query("SELECT * FROM $NOTE_TBL_NAME WHERE $NOTE_COL_TITLE LIKE '%' || :searchText || '%'")
-    fun searchTitle(searchText: String): List<NoteEntity>
+    suspend fun searchTitle(searchText: String): List<NoteEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun save(note: NoteEntity): Long
+    suspend fun save(note: NoteEntity): Long
+
+    @Query("DELETE FROM $NOTE_TBL_NAME WHERE $NOTE_PRIMARY_KEY=:id")
+    suspend fun delete(id: Int)
+
+    @Query("DELETE FROM $NOTE_TBL_NAME WHERE $NOTE_PRIMARY_KEY in (:ids)")
+    suspend fun deleteByIds(ids: List<Int>)
 }

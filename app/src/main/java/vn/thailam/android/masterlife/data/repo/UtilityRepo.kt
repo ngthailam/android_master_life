@@ -4,19 +4,19 @@ import vn.thailam.android.masterlife.data.dao.UtilityDao
 import vn.thailam.android.masterlife.data.entity.UtilityEntity
 
 interface UtilityRepo {
-    fun insertAll(utilities: List<UtilityEntity>)
+    suspend fun insertAll(utilities: List<UtilityEntity>)
 
-    fun getAll(): List<UtilityEntity>
+    suspend fun getAll(): List<UtilityEntity>
 }
 
 class UtilityRepoImpl(
     private val utilityDao: UtilityDao
 ) : UtilityRepo {
-    override fun insertAll(utilities: List<UtilityEntity>) {
+    override suspend fun insertAll(utilities: List<UtilityEntity>) {
         utilityDao.insertAll(utilities)
     }
 
-    override fun getAll(): List<UtilityEntity> {
+    override suspend fun getAll(): List<UtilityEntity> {
         return utilityDao.getAll()
     }
 

@@ -3,23 +3,23 @@ package vn.thailam.android.masterlife.data.dao
 import vn.thailam.android.masterlife.data.entity.UserEntity
 
 interface AuthDao {
-    fun isLoggedIn(): Boolean
+    suspend fun isLoggedIn(): Boolean
 
-    fun getUser(): UserEntity?
+    suspend fun getUser(): UserEntity?
 
-    fun saveUser(name: String)
+    suspend fun saveUser(name: String)
 }
 
 class AuthDaoImpl : AuthDao {
-    override fun isLoggedIn(): Boolean {
+    override suspend fun isLoggedIn(): Boolean {
         TODO("Not yet implemented")
     }
 
-    override fun getUser(): UserEntity {
+    override suspend fun getUser(): UserEntity {
         return UserEntity(name = "Lam")
     }
 
-    override fun saveUser(name: String) {
+    override suspend fun saveUser(name: String) {
         TODO("Not yet implemented")
     }
 }

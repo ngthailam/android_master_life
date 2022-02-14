@@ -1,6 +1,7 @@
 package vn.thailam.android.masterlife.data
 
 import android.content.Context
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -15,12 +16,15 @@ import vn.thailam.android.masterlife.data.entity.PassEntity
 import vn.thailam.android.masterlife.data.entity.ScheduleEntity
 import vn.thailam.android.masterlife.data.entity.UtilityEntity
 
-const val DB_VERSION = 6
+const val DB_VERSION = 8
 
 @Database(
-    exportSchema = false,
+    exportSchema = true,
     entities = [UtilityEntity::class, PassEntity::class, NoteEntity::class, ScheduleEntity::class],
-    version = DB_VERSION
+    version = DB_VERSION,
+    autoMigrations = [
+//        AutoMigration(from = 6, to = 7)
+    ]
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {

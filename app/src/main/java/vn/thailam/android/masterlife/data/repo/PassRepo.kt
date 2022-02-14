@@ -7,20 +7,20 @@ import vn.thailam.android.masterlife.data.entity.PassEntity
 import vn.thailam.android.masterlife.data.sources.local.PassSecurityStore
 
 interface PassRepo {
-    fun getAll(): List<PassEntity>
+    suspend fun getAll(): List<PassEntity>
 
     fun observeAll(): Flow<List<PassEntity>>
 
-    fun getDecryptedPassword(passEntity: PassEntity): String
+    suspend fun getDecryptedPassword(passEntity: PassEntity): String
 
-    fun savePassword(name: String, accName: String, password: String)
+    suspend fun savePassword(name: String, accName: String, password: String)
 }
 
 class PassRepoImpl(
     private val passDao: PassDao,
     private val passSecurityStore: PassSecurityStore,
 ) : PassRepo {
-    override fun savePassword(name: String, accName: String, password: String) {
+    override suspend fun savePassword(name: String, accName: String, password: String) {
         val passEntity = PassEntity(
             name = name,
             accName = accName,
@@ -29,7 +29,7 @@ class PassRepoImpl(
         passDao.insert(passEntity)
     }
 
-    override fun getAll(): List<PassEntity> {
+    override suspend fun getAll(): List<PassEntity> {
         return passDao.getAll().map {
             it.copy(decryptedPassword = passSecurityStore.decrypt(it.encryptedPassword!!))
         }
@@ -43,7 +43,7 @@ class PassRepoImpl(
         }
     }
 
-    override fun getDecryptedPassword(passEntity: PassEntity): String {
+    override suspend fun getDecryptedPassword(passEntity: PassEntity): String {
         return passSecurityStore.decrypt(passEntity.encryptedPassword!!)
     }
 }

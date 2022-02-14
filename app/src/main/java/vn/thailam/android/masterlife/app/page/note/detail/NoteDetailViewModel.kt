@@ -8,6 +8,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import vn.thailam.android.japanwritinghelper.app.base.BaseViewModel
+import vn.thailam.android.masterlife.app.utils.OpStatus
 import vn.thailam.android.masterlife.data.entity.NoteEntity
 import vn.thailam.android.masterlife.data.repo.NoteRepo
 
@@ -17,9 +18,13 @@ class NoteDetailViewModel(
     var saveNoteDebounceJob: Job? = null
     val mode = MutableLiveData<NoteDetailMode>(NoteDetailMode.Unknown)
 
+    val deleteOpStatus = MutableLiveData<OpStatus>()
+    val pinOpStatus = MutableLiveData<OpStatus>()
+
     var id: Int? = null
     var title: String = ""
     var desc: String = ""
+    var isPin: Boolean = false
 
     fun initialize(noteId: Int) {
         if (noteId == 0) {
@@ -34,6 +39,7 @@ class NoteDetailViewModel(
                 id = noteEntity.id
                 title = noteEntity.title ?: ""
                 desc = noteEntity.desc ?: ""
+                isPin = noteEntity.pin != null
 
                 mode.value = NoteDetailMode.Edit(note = noteEntity)
             }
@@ -43,30 +49,64 @@ class NoteDetailViewModel(
     fun onTitleChanged(text: String) {
         if (text != title) {
             title = text
-            saveNote()
+            onEditData()
         }
     }
 
     fun onDescChanged(text: String) {
         if (text != desc) {
             desc = text
-            saveNote()
+            onEditData()
         }
     }
 
-    fun saveNote() {
+    fun onEditData() {
         saveNoteDebounceJob?.cancel()
         saveNoteDebounceJob = viewModelScope.launch {
             delay(350L)
-            val noteId = withContext(Dispatchers.IO) {
-                noteRepo.save(
-                    id = id,
-                    title = title,
-                    desc = desc
-                )
+            if (title.isEmpty() && desc.isEmpty()) {
+                deleteNote()
+            } else {
+                saveNote()
             }
+        }
+    }
 
-            id = noteId
+    fun saveNote() = viewModelScope.launch(Dispatchers.IO) {
+        val noteId = noteRepo.save(
+            id = id,
+            title = title,
+            desc = desc
+        )
+        id = noteId
+    }
+
+    fun deleteNote() = viewModelScope.launch(Dispatchers.IO) {
+        if (id == null) {
+            return@launch
+        }
+
+        deleteOpStatus.postValue(OpStatus.Loading)
+        try {
+            noteRepo.delete(id!!)
+            deleteOpStatus.postValue(OpStatus.Success)
+        } catch (t: Throwable) {
+            deleteOpStatus.postValue(OpStatus.Error(t))
+        }
+    }
+
+    fun pinOrUnpinNote() = viewModelScope.launch(Dispatchers.IO) {
+        if (id == null) {
+            return@launch
+        }
+
+        pinOpStatus.postValue(OpStatus.Loading)
+        try {
+            noteRepo.pinOrUnpin(id!!)
+            isPin = !isPin
+            pinOpStatus.postValue(OpStatus.Success)
+        } catch (t: Throwable) {
+            pinOpStatus.postValue(OpStatus.Error(t))
         }
     }
 }
