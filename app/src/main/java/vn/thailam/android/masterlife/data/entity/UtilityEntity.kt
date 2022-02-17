@@ -6,6 +6,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
+import vn.thailam.android.masterlife.data.entity.UtilityCode.Companion.INVENTORY
 import vn.thailam.android.masterlife.data.entity.UtilityCode.Companion.NOTES
 import vn.thailam.android.masterlife.data.entity.UtilityCode.Companion.PASS_SAVER
 
@@ -32,11 +33,12 @@ data class UtilityEntity(
 
 @Retention(AnnotationRetention.SOURCE)
 @StringDef(
-    value = [PASS_SAVER, NOTES]
+    value = [PASS_SAVER, NOTES, INVENTORY]
 )
 annotation class UtilityCode {
     companion object {
         const val PASS_SAVER = "PASS_SAVER"
         const val NOTES = "NOTES"
+        const val INVENTORY = "INVENTORY"
     }
 }

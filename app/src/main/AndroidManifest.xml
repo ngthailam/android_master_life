@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MasterLife">
-        <activity android:name=".app.page.note.detail.NoteDetailActivity"></activity>
+        <activity android:name=".app.page.inventory.InventoryActivity"></activity>
+        <activity android:name=".app.page.note.detail.NoteDetailActivity" />
         <activity android:name=".app.page.note.list.NoteActivity" />
         <activity
             android:name=".app.page.splash.SplashActivity"

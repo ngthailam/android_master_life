@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import vn.thailam.android.masterlife.app.base.BaseVBActivity
 import vn.thailam.android.masterlife.app.page.home.utility.HomeUtilityAdapter
+import vn.thailam.android.masterlife.app.page.inventory.InventoryActivity
 import vn.thailam.android.masterlife.app.page.note.list.NoteActivity
 import vn.thailam.android.masterlife.app.page.passsaver.list.PassSaverActivity
 import vn.thailam.android.masterlife.data.entity.UtilityCode
@@ -51,6 +52,10 @@ class HomeActivity : BaseVBActivity<ActivityHomeBinding>() {
             }
             UtilityCode.NOTES -> {
                 val intent = Intent(this, NoteActivity::class.java)
+                startActivity(intent)
+            }
+            UtilityCode.INVENTORY -> {
+                val intent = Intent(this, InventoryActivity::class.java)
                 startActivity(intent)
             }
             else -> {

@@ -39,7 +39,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
         android:background="@null"
-        android:gravity="top|left"
+        android:gravity="top|start"
         android:hint="Start typing"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"

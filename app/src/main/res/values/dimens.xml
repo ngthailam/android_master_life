@@ -5,4 +5,10 @@
     <dimen name="dp_16">16dp</dimen>
     <dimen name="dp_8">8dp</dimen>
     <dimen name="dp_4">4dp</dimen>
+
+    <dimen name="ips_large_action_size">40dp</dimen>
+    <dimen name="ips_medium_action_size">32dp</dimen>
+    <dimen name="ips_small_action_size">24dp</dimen>
+    <dimen name="ips_action_touch_area_size">40dp</dimen>
+    <dimen name="ips_action_min_width">24dp</dimen>
 </resources>

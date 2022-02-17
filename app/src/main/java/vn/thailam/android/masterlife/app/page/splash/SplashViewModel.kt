@@ -40,7 +40,8 @@ class SplashViewModel(
         if (!exist) {
             val data = listOf(
                 UtilityEntity(name = "Password Saver", code = UtilityCode.PASS_SAVER),
-                UtilityEntity(name = "Notes", code = UtilityCode.NOTES)
+                UtilityEntity(name = "Notes", code = UtilityCode.NOTES),
+                UtilityEntity(name = "Inventory", code = UtilityCode.INVENTORY),
             )
             utilityRepo.insertAll(data)
         }

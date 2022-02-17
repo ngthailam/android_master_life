@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivDecrease"
+        android:layout_width="@dimen/ips_large_action_size"
+        android:layout_height="@dimen/ips_large_action_size"
+        android:background="@drawable/bg_rounded_8"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_24baseline_minus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/blue500"
+        tools:ignore="ContentDescription" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvValue"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="8dp"
+        android:background="@drawable/bg_rounded_8_border_200"
+        android:gravity="center"
+        android:maxLength="3"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/ivIncrease"
+        app:layout_constraintStart_toEndOf="@id/ivDecrease"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="12" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivIncrease"
+        android:layout_width="@dimen/ips_large_action_size"
+        android:layout_height="@dimen/ips_large_action_size"
+        android:background="@drawable/bg_rounded_8"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_24baseline_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/blue500"
+        tools:ignore="ContentDescription" />
+
+</merge>
