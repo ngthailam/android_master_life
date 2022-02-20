@@ -8,12 +8,16 @@ import vn.thailam.android.masterlife.data.dao.AuthDao
 import vn.thailam.android.masterlife.data.dao.AuthDaoImpl
 import vn.thailam.android.masterlife.data.repo.AuthRepo
 import vn.thailam.android.masterlife.data.repo.AuthRepoImpl
+import vn.thailam.android.masterlife.data.repo.InventoryRepo
+import vn.thailam.android.masterlife.data.repo.InventoryRepoImpl
 import vn.thailam.android.masterlife.data.repo.KeyRepo
 import vn.thailam.android.masterlife.data.repo.KeyRepoImpl
 import vn.thailam.android.masterlife.data.repo.NoteRepo
 import vn.thailam.android.masterlife.data.repo.NoteRepoImpl
 import vn.thailam.android.masterlife.data.repo.PassRepo
 import vn.thailam.android.masterlife.data.repo.PassRepoImpl
+import vn.thailam.android.masterlife.data.repo.RoomTypeRepo
+import vn.thailam.android.masterlife.data.repo.RoomTypeRepoImpl
 import vn.thailam.android.masterlife.data.repo.ScheduleRepo
 import vn.thailam.android.masterlife.data.repo.ScheduleRepoImpl
 import vn.thailam.android.masterlife.data.repo.UtilityRepo
@@ -36,11 +40,15 @@ val daoModule = module {
     fun providePassDao(database: AppDatabase) = database.passDao
     fun provideNoteDao(database: AppDatabase) = database.noteDao
     fun provideScheduleDao(database: AppDatabase) = database.scheduleDao
+    fun provideInventoryDao(database: AppDatabase) = database.inventoryDao
+    fun provideRoomTypeDao(database: AppDatabase) = database.roomTypeDao
 
     factory { provideUtilityDao(get()) }
     factory { providePassDao(get()) }
     factory { provideNoteDao(get()) }
     factory { provideScheduleDao(get()) }
+    factory { provideInventoryDao(get()) }
+    factory { provideRoomTypeDao(get()) }
     factory<AuthDao> { AuthDaoImpl() }
 }
 
@@ -54,6 +62,8 @@ val repoModule = module {
     factory<KeyRepo> { KeyRepoImpl() }
     factory<NoteRepo> { NoteRepoImpl(get()) }
     factory<ScheduleRepo> { ScheduleRepoImpl(get()) }
+    factory<RoomTypeRepo> { RoomTypeRepoImpl(get()) }
+    factory<InventoryRepo> { InventoryRepoImpl(get(), get()) }
 }
 
 

@@ -23,4 +23,17 @@
         <attr name="sv_actionText" format="string" />
         <attr name="sv_backgroundColor" format="color" />
     </declare-styleable>
+    <declare-styleable name="InputSpinner">
+        <attr name="ips_value" format="integer" />
+        <attr name="ips_min" format="integer" />
+        <attr name="ips_max" format="integer" />
+        <attr name="ips_is_increase_disable_on_max" format="boolean" />
+        <attr name="ips_is_decrease_disable_on_min" format="boolean" />
+        <attr name="ips_is_auto_update_value" format="boolean" />
+        <attr name="ips_style">
+            <enum name="small" value="0" />
+            <enum name="medium" value="1" />
+            <enum name="large" value="2" />
+        </attr>
+    </declare-styleable>
 </resources>

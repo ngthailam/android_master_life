@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white500"
+    tools:context=".app.page.passsaver.create.PassSaverCreateFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="What is the inventory name?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilName"
+        style="@style/pass_saver_create_text_input_layout"
+        android:layout_width="0dp"
+        android:hint="Inventory name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etName"
+            style="@style/pass_saver_create_til_edt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleAccName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Where is it located?"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilName" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilRoomName"
+        style="@style/pass_saver_create_text_input_layout"
+        android:layout_width="0dp"
+        android:hint="Room name"
+        app:endIconDrawable="@drawable/ic_24baseline_arrow_down"
+        app:endIconTint="@color/ink400"
+        app:endIconMode="custom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleAccName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRoomName"
+            style="@style/pass_saver_create_til_edt"
+            android:enabled="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <View
+        android:id="@+id/vRoomNameClickZone"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="@id/tilRoomName"
+        app:layout_constraintStart_toStartOf="@id/tilRoomName"
+        app:layout_constraintTop_toTopOf="@id/tilRoomName"
+        app:layout_constraintBottom_toBottomOf="@id/tilRoomName"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitlePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Additional description if needed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tilRoomName" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilLocDesc"
+        style="@style/pass_saver_create_text_input_layout"
+        android:layout_width="0dp"
+        android:hint="Description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitlePassword">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etLocDesc"
+            style="@style/pass_saver_create_til_edt"
+            android:gravity="top|start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="5"
+            android:inputType="textMultiLine" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <vn.thailam.android.masterlife.app.custom.inputspinner.InputSpinner
+        android:id="@+id/ipsCount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:ips_is_decrease_disable_on_min="true"
+        app:ips_is_increase_disable_on_max="true"
+        app:ips_value="1"
+        app:ips_max="99"
+        app:ips_style="large"
+        app:layout_constraintBottom_toTopOf="@id/btnCreate"
+        app:layout_constraintEnd_toEndOf="@id/btnCreate"
+        app:layout_constraintStart_toStartOf="@id/btnCreate" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCreate"
+        style="@style/common_button"
+        android:layout_width="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="8dp"
+        android:text="Create"
+        app:cornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
